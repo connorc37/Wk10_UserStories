@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Contribution Info</title>
+	<style>
+		body {
+		font-family: Arial, Helvetica, sans-serif;
+		}
+	</style>
+</head>
+<body>
+		<form th:object="${newContributor}" th:action="@{/update/{id}(id=${newContributor.id})}" method='POST'>
+			Name:<br>
+			<input name="name" size="20" th:field="*{name}"><br>
+			Username:<br>
+			<input name="username" size="20" th:field="*{username}"><br>
+			User:<br>
+			<input name="contribution.user" size="20" th:field="*{contribution.user}"><br>
+			Action:<br>
+			<input name="contribution.action" size="20" th:field="*{contribution.action}"><br>
+			Achievement:<br>
+			<input name="contribution.achievement" size="20" th:field="*{contribution.achievement}"><br>
+			Priority:<br>
+			<input name="contribution.priority" size="20" th:field="*{contribution.priority}"><br>
+			<input name="submit" type="submit" value="Submit"><br>
+		</form>
+		<br><a href="viewAllContributors">View all user stories</a>
+
+</body>
+</html>

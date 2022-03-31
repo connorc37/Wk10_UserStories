@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Contributors</title>
+	<style>
+		body {
+		font-family: Arial, Helvetica, sans-serif;
+		}
+		#contributions {
+		border-collapse: collapse;
+		width: 75%;
+		}
+		
+		#contributions td, #contributions th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		}
+		
+		#contributions tr:nth-child(even) {
+		background-color: #f2f2f2;
+		}
+		
+		#contributions tr:hover {
+		background-color: #ddd;
+		}
+		
+		#contributions th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #038857;
+		color: white;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<table id="contributions">
+			<tr>
+				<th>#</th>
+				<th colspan="2">Contributor</th>
+				<th><i>As a </i></th>
+				<th><i>I'd like to be able to</i></th>
+				<th><i>so I can</i></th>
+				<th>Priority</th>			
+			<tr>
+			<tr th:each="contributor : ${allContributors}">
+				<td th:text="${contributor.id}">
+				<td th:text="${contributor.name}">
+				<td th:text="${contributor.username}">
+				<td th:text="${contributor.contribution.user}">
+				<td th:text="${contributor.contribution.action}">
+				<td th:text="${contributor.contribution.achievement}">
+				<td th:text="${contributor.contribution.priority}">				
+				<td><a th:href="@{/edit/{id}(id=${contributor.id})}">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${contributor.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+	<br><a href="../addContributor">Add a user story</a>
+</body>
+</html>

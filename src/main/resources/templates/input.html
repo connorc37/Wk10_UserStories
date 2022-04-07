@@ -3,6 +3,45 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Contribution Info</title>
+	<script>
+        function validate() {
+        	let badName = /[^a-z- ]/i;
+        	let badAlphabetic = /[^a-z]/i;
+        	let badAlphanumeric = /[^a-z0-9@_]/i;
+        	
+        	if (document.userStoryForm["name"].value == "" || badName.test(userStoryForm["name"].value)) {
+                alert("Please provide a name using alphabetic characters only.");
+                document.userStoryForm["name"].focus();
+                return false;
+            }
+        	if (document.userStoryForm["username"].value == "" || badAlphanumeric.test(userStoryForm["username"].value)) {
+                alert("Please provide a username using alphanumeric characters only.");
+                document.userStoryForm["username"].focus();
+                return false;
+            }
+        	if (document.userStoryForm["contribution.user"].value == "" || badAlphabetic.test(userStoryForm["contribution.user"].value)) {
+                alert("Please provide a user using alphabetic characters only.");
+                document.userStoryForm["contribution.user"].focus();
+                return false;
+            }
+        	if (document.userStoryForm["contribution.action"].value == "" || badAlphabetic.test(userStoryForm["contribution.action"].value)) {
+                alert("Please provide an action using alphabetic characters only.");
+                document.userStoryForm["contribution.action"].focus();
+                return false;
+            }
+        	if (document.userStoryForm["contribution.achievement"].value == "" || badAlphabetic.test(userStoryForm["contribution.achievement"].value)) {
+                alert("Please provide an achievement using alphabetic characters only.");
+                document.userStoryForm["contribution.achievement"].focus();
+                return false;
+            }
+        	if (document.userStoryForm["contribution.priority"].value == "" || badAlphabetic.test(userStoryForm["contribution.priority"].value)) {
+                alert("Please provide a priority using alphabetic characters only.");
+                document.userStoryForm["contribution.priority"].focus();
+                return false;
+            }
+        	return true;
+        }
+	</script>
 	<style>
 		body {
 		font-family: Arial, Helvetica, sans-serif;
@@ -10,7 +49,7 @@
 	</style>
 </head>
 <body>
-		<form th:object="${newContributor}" th:action="@{/update/{id}(id=${newContributor.id})}" method='POST'>
+		<form name="userStoryForm" onsubmit="return(validate())" th:object="${newContributor}" th:action="@{/update/{id}(id=${newContributor.id})}" method='POST'>
 			Name:<br>
 			<input name="name" size="20" th:field="*{name}"><br>
 			Username:<br>
